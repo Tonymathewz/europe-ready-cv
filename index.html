@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Europe-Ready CV - Europass-style, ATS and Lebenslauf</title>
+<style>
+:root{--eu:#0b3d91;--line:#d7dde6;--dim:#5a6577;--bg:#f2f4f8;--ok:#1d7a4f}
+[hidden]{display:none!important}*{box-sizing:border-box}
+body{margin:0;font:15px "Segoe UI",Arial,sans-serif;background:var(--bg);color:#1b2333}
+header.top{background:var(--eu);color:#fff;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+header.top h1{margin:0;font-size:20px}header.top small{opacity:.85}
+.wrap{display:grid;grid-template-columns:minmax(340px,460px) minmax(0,1fr);gap:16px;padding:16px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+details{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:#fff}
+summary{cursor:pointer;padding:10px 12px;font-weight:700;list-style:none}summary::-webkit-details-marker{display:none}
+summary:before{content:"▸ ";color:var(--eu)}details[open] summary:before{content:"▾ "}
+details>.in{padding:0 12px 12px}
+label{display:block;font-size:12.5px;color:var(--dim);margin-top:6px}
+input,textarea,select{width:100%;font:inherit;padding:7px 9px;border:1px solid var(--line);border-radius:8px;margin-top:2px;background:#fff;color:#1b2333}
+textarea{resize:vertical}.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.item{border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin:8px 0;background:#fafbfd;position:relative}
+.item .x{position:absolute;right:6px;top:6px;padding:1px 8px}
+.cefr{display:grid;grid-template-columns:1.4fr repeat(5,1fr);gap:4px;align-items:end}.cefr select{padding:5px 4px}
+.cefr .h{font-size:11px;color:var(--dim);text-align:center}
+button{font:inherit;padding:7px 13px;border:1px solid var(--line);border-radius:9px;background:#fff;cursor:pointer;color:#1b2333}
+button.go{background:var(--eu);border-color:var(--eu);color:#fff}.bar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.drop{border:2px dashed #b8c4da;border-radius:12px;padding:16px;text-align:center;background:#f7f9fd;cursor:pointer}
+.drop.on{border-color:var(--eu);background:#eef3fc}
+.msg{background:#fff7e0;border:1px solid #e9cf86;padding:9px 12px;border-radius:9px;margin:8px 0;font-size:13px}
+.msg.ok{background:#e9f6ef;border-color:#9fd3b7}
+.meta{font-size:12.5px;color:var(--dim)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.tabs button.on{background:var(--eu);color:#fff;border-color:var(--eu)}
+.paper{background:#fff;width:210mm;min-height:297mm;padding:14mm 15mm;box-shadow:0 2px 14px rgba(0,0,0,.14);color:#111;zoom:.78;font-size:10.5pt;line-height:1.38}
+.paper h2{font-size:12pt;margin:12px 0 6px}
+.ep .hd{display:flex;gap:14px;align-items:flex-start;border-bottom:3px solid var(--eu);padding-bottom:10px}
+.ep .hd img{width:30mm;height:36mm;object-fit:cover;border-radius:4px}
+.ep .nm{font-size:22pt;font-weight:700;color:var(--eu);line-height:1.1}.ep .hl{font-size:12pt;margin-top:2px}
+.ep .ct{margin-top:6px;font-size:9.5pt;color:#333}.ep .ct span{margin-right:12px;display:inline-block}
+.ep h2{color:var(--eu);text-transform:uppercase;letter-spacing:.05em;font-size:10.5pt;border-bottom:1px solid #c9d3e6;padding-bottom:3px;margin-top:14px}
+.ep .row{display:grid;grid-template-columns:34mm 1fr;gap:10px;margin:7px 0;break-inside:avoid}
+.ep .row .d{color:#555;font-size:9.5pt}.ep .row b{display:block}.ep .row .w{color:#333}
+.ep ul,.ats ul,.lb ul{margin:3px 0 0;padding-left:18px}
+.ep table{border-collapse:collapse;width:100%;font-size:9.5pt;margin-top:4px}
+.ep th,.ep td{border:1px solid #c9d3e6;padding:4px 6px;text-align:center}.ep th{background:#eef2fa;font-weight:600}.ep td:first-child,.ep th:first-child{text-align:left}
+.ep .cefrnote{font-size:8pt;color:#666;margin-top:3px}
+.ats{font-family:Arial,sans-serif}.ats .nm{font-size:18pt;font-weight:700}.ats h2{font-size:11pt;text-transform:uppercase;border-bottom:1px solid #000;padding-bottom:2px}
+.ats .e{margin:6px 0;break-inside:avoid}
+.lb .top{display:flex;justify-content:space-between;gap:12px}.lb .nm{font-size:20pt;font-weight:700}.lb img{width:35mm;height:45mm;object-fit:cover}
+.lb h2{font-size:11.5pt;border-bottom:1.5px solid #333;padding-bottom:2px;margin-top:14px}
+.lb .r{display:grid;grid-template-columns:36mm 1fr;gap:10px;margin:5px 0;break-inside:avoid}
+.lb .sig{margin-top:16mm;display:flex;justify-content:space-between}.lb .sig div{border-top:1px solid #333;width:70mm;padding-top:3px;font-size:9pt}
+footer{padding:8px 18px 22px;color:var(--dim);font-size:12px}
+@page{size:A4;margin:0}
+@media print{body{background:#fff}header.top,.panel,.tabs,.noprint,footer{display:none!important}.wrap{display:block;padding:0}.paper{box-shadow:none;zoom:1;width:auto;min-height:0}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+@media (max-width:1000px){.wrap{grid-template-columns:1fr}.paper{zoom:.48}}
+</style></head><body>
+<header class=top><div><h1>Europe-Ready CV</h1><small>Turn your existing CV into a Europass-style CV, an ATS-friendly CV and a German Lebenslauf. Free, and it all stays in your browser.</small></div>
+<div class=bar style="margin:0"><button onclick="loadSample()">Try sample</button><button onclick="saveFile()">Save my data</button><button onclick="$('#loadf').click()">Load data</button><input type=file id=loadf accept=".json" hidden onchange="loadFile(this.files[0])"></div></header>
+<div class=wrap>
+<div class=panel>
+<div class=drop id=drop onclick="$('#cvfile').click()"><b>1. Bring in your current CV</b><br><span class=meta>Drop a PDF, Word (.docx) or text file here, or click to choose. Or paste the text below.</span>
+<input type=file id=cvfile accept=".pdf,.docx,.txt" hidden onchange="importFile(this.files[0])"></div>
+<details><summary>Paste CV text instead</summary><div class=in><textarea id=paste rows=6 placeholder="Paste the full text of your CV here"></textarea><div class=bar><button class=go onclick="importText($('#paste').value)">Read this text</button></div></div></details>
+<div id=note class=msg hidden></div>
+<p class=meta><b>2. Check and complete the details.</b> Reading a CV automatically is never perfect, so look through each section.</p>
+<form id=f onsubmit="return false">
+<details open><summary>Personal details</summary><div class=in>
+<div class=g2><label>First name<input name=first></label><label>Last name<input name=last></label></div>
+<label>Headline / job title<input name=headline placeholder="e.g. Data Analyst"></label>
+<div class=g2><label>Email<input name=email type=email></label><label>Phone<input name=phone></label></div>
+<label>Address / city, country<input name=address></label>
+<div class=g2><label>LinkedIn or website<input name=web></label><label>Nationality (optional)<input name=nationality></label></div>
+<div class=g2><label>Date of birth (optional)<input name=dob placeholder="Only if the employer expects it"></label><label>Photo (optional)<input type=file id=photo accept="image/*"></label></div>
+<div class=bar><button type=button onclick="S.photo='';$('#photo').value='';draw()">Remove photo</button></div>
+</div></details>
+<details open><summary>About me</summary><div class=in><textarea name=about rows=4 placeholder="2-4 lines: who you are, your strengths, what you are looking for"></textarea></div></details>
+<details open><summary>Work experience</summary><div class=in><div id=work></div><button type=button onclick="add('work')">+ Add job</button></div></details>
+<details open><summary>Education and training</summary><div class=in><div id=edu></div><button type=button onclick="add('edu')">+ Add education</button></div></details>
+<details open><summary>Languages (CEFR)</summary><div class=in>
+<label>Mother tongue(s)<input name=mother placeholder="e.g. Malayalam"></label>
+<div id=lang></div><button type=button onclick="add('lang')">+ Add language</button>
+<p class=meta>A1-A2 basic, B1-B2 independent, C1-C2 proficient. If unsure, use the same level for all five.</p></div></details>
+<details><summary>Skills and more</summary><div class=in>
+<label>Digital skills (comma separated)<input name=digital placeholder="Excel, Python, SAP, Canva"></label>
+<label>Other skills (comma separated)<input name=skills placeholder="Customer service, Team leadership"></label>
+<label>Driving licence<input name=licence placeholder="e.g. B"></label>
+<label>Extra section title (optional)<input name=xtitle placeholder="e.g. Certifications, Volunteering"></label>
+<label>Extra section text<textarea name=xtext rows=3 placeholder="One item per line"></textarea></label>
+<label>Place for the Lebenslauf signature line<input name=place placeholder="e.g. Berlin"></label></div></details>
+</form>
+<div class=bar><button type=button onclick="if(confirm('Clear everything?')){S=blank();fill();draw()}">Start over</button></div>
+</div>
+<div>
+<div class="tabs noprint"><button data-f=ep class=on onclick="fmt('ep')">Europass style</button><button data-f=ats onclick="fmt('ats')">ATS-friendly</button><button data-f=lb onclick="fmt('lb')">Lebenslauf (DE)</button>
+<span style="flex:1"></span><button class=go onclick="print()">Download PDF</button><button onclick="saveDoc()">Download Word</button></div>
+<div class=paper id=out></div>
+</div></div>
+<footer>"Europass" is a trademark of the European Union. This free tool makes Europass-<i>style</i> CVs and is not connected to the EU or the official Europass service. Your data never leaves your browser (reading a PDF loads the free pdf.js library from a public CDN).</footer>
+<template id=t-work><div class=item><button type=button class=x onclick="del(this,'work')">&#10005;</button>
+<div class=g2><label>Job title<input data-k=title></label><label>Employer<input data-k=org></label></div>
+<div class=g3><label>City, country<input data-k=place></label><label>From<input data-k=from placeholder="03/2021"></label><label>To<input data-k=to placeholder="Present"></label></div>
+<label>Main tasks / achievements (one per line)<textarea data-k=desc rows=3></textarea></label></div></template>
+<template id=t-edu><div class=item><button type=button class=x onclick="del(this,'edu')">&#10005;</button>
+<div class=g2><label>Qualification<input data-k=title placeholder="BSc Computer Science"></label><label>Institution<input data-k=org></label></div>
+<div class=g3><label>City, country<input data-k=place></label><label>From<input data-k=from></label><label>To<input data-k=to></label></div>
+<label>Details (optional)<textarea data-k=desc rows=2 placeholder="Grade, thesis, main subjects"></textarea></label></div></template>
+<template id=t-lang><div class=item><button type=button class=x onclick="del(this,'lang')">&#10005;</button>
+<div class=cefr><span class=h style="text-align:left">Language</span><span class=h>Listen</span><span class=h>Read</span><span class=h>Speak</span><span class=h>Talk</span><span class=h>Write</span>
+<input data-k=name placeholder="English"><select data-k=l></select><select data-k=r></select><select data-k=sp></select><select data-k=si></select><select data-k=w></select></div></div></template>
+<script>
+const $=s=>document.querySelector(s),F=$('#f'),LV=['A1','A2','B1','B2','C1','C2'],CE=['l','r','sp','si','w'];
+const blank=()=>({first:'',last:'',headline:'',email:'',phone:'',address:'',web:'',nationality:'',dob:'',about:'',mother:'',digital:'',skills:'',licence:'',xtitle:'',xtext:'',place:'',photo:'',work:[],edu:[],lang:[]});
+let S=blank(),FMT='ep';
+const esc=t=>String(t||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const lines=t=>String(t||'').split('\n').map(x=>x.replace(/^\s*[-•*·–]\s*/,'').trim()).filter(Boolean);
+const list=t=>String(t||'').split(/[,;\n]/).map(x=>x.trim()).filter(Boolean);
+function note(t,ok){const n=$('#note');n.textContent=t;n.className='msg'+(ok?' ok':'');n.hidden=!t}
+function fill(){[...F.elements].forEach(e=>{if(e.name&&e.name in S)e.value=S[e.name]});['work','edu','lang'].forEach(k=>{$('#'+k).innerHTML='';S[k].forEach(x=>row(k,x))})}
+function row(k,x){const t=$('#t-'+k).content.cloneNode(true),it=t.querySelector('.item');
+it.querySelectorAll('select').forEach(s=>s.innerHTML=LV.map(v=>'<option>'+v+'</option>').join(''));
+it.querySelectorAll('[data-k]').forEach(e=>{e.value=x[e.dataset.k]||(e.tagName==='SELECT'?'B1':'')});$('#'+k).appendChild(t)}
+function read(){[...F.elements].forEach(e=>{if(e.name&&e.name in S)S[e.name]=e.value});
+['work','edu','lang'].forEach(k=>S[k]=[...$('#'+k).querySelectorAll('.item')].map(it=>{const o={};it.querySelectorAll('[data-k]').forEach(e=>o[e.dataset.k]=e.value.trim());return o}))}
+function add(k){read();S[k].push(k==='lang'?{l:'B1',r:'B1',sp:'B1',si:'B1',w:'B1'}:{});row(k,S[k][S[k].length-1]);draw()}
+function del(b,k){b.closest('.item').remove();draw()}
+const name=()=>[S.first,S.last].filter(Boolean).join(' ')||'Your Name';
+const dates=x=>[x.from,x.to].filter(Boolean).join(' – ');
+const ul=t=>lines(t).length?'<ul>'+lines(t).map(d=>'<li>'+esc(d)+'</li>').join('')+'</ul>':'';
+function europass(){const c=[S.email&&'✉ '+S.email,S.phone&&'☎ '+S.phone,S.address&&'⌂ '+S.address,S.web&&'🔗 '+S.web,S.nationality&&'Nationality: '+S.nationality,S.dob&&'Date of birth: '+S.dob].filter(Boolean);
+const ent=a=>a.filter(x=>x.title||x.org).map(x=>'<div class=row><div class=d>'+esc(dates(x))+'</div><div><b>'+esc(x.title)+'</b><div class=w>'+esc([x.org,x.place].filter(Boolean).join(' – '))+'</div>'+ul(x.desc)+'</div></div>').join('');
+const L=S.lang.filter(l=>l.name),W=ent(S.work),E=ent(S.edu);
+return '<div class=ep><div class=hd>'+(S.photo?'<img alt="" src="'+S.photo+'">':'')+'<div><div class=nm>'+esc(name())+'</div>'+(S.headline?'<div class=hl>'+esc(S.headline)+'</div>':'')+'<div class=ct>'+c.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div></div></div>'
++(S.about?'<h2>About me</h2><div>'+esc(S.about).replace(/\n/g,'<br>')+'</div>':'')
++(W?'<h2>Work experience</h2>'+W:'')+(E?'<h2>Education and training</h2>'+E:'')
++((S.mother||L.length)?'<h2>Language skills</h2>'+(S.mother?'<div>Mother tongue(s): <b>'+esc(S.mother)+'</b></div>':'')
++(L.length?'<table><tr><th rowspan=2>Other language(s)</th><th colspan=2>Understanding</th><th colspan=2>Speaking</th><th>Writing</th></tr><tr><th>Listening</th><th>Reading</th><th>Spoken production</th><th>Spoken interaction</th><th></th></tr>'
++L.map(l=>'<tr><td><b>'+esc(l.name)+'</b></td>'+CE.map(k=>'<td>'+esc(l[k])+'</td>').join('')+'</tr>').join('')+'</table><div class=cefrnote>Levels: A1 and A2: basic user; B1 and B2: independent user; C1 and C2: proficient user (Common European Framework of Reference for Languages).</div>':''):'')
++(S.digital?'<h2>Digital skills</h2><div>'+list(S.digital).map(esc).join(' · ')+'</div>':'')
++(S.skills?'<h2>Other skills</h2><div>'+list(S.skills).map(esc).join(' · ')+'</div>':'')
++(S.licence?'<h2>Driving licence</h2><div>'+esc(S.licence)+'</div>':'')
++(S.xtitle&&S.xtext?'<h2>'+esc(S.xtitle)+'</h2>'+ul(S.xtext):'')+'</div>'}
+function ats(){const lvl=l=>{const v=CE.map(k=>LV.indexOf(l[k])).filter(i=>i>=0);return v.length?LV[Math.round(v.reduce((a,b)=>a+b,0)/v.length)]:''};
+const ent=a=>a.filter(x=>x.title||x.org).map(x=>'<div class=e><b>'+esc(x.title)+'</b>'+(x.org?', '+esc(x.org):'')+(x.place?', '+esc(x.place):'')+(dates(x)?' | '+esc(dates(x)):'')+ul(x.desc)+'</div>').join('');
+const W=ent(S.work),E=ent(S.edu);
+return '<div class=ats><div class=nm>'+esc(name())+'</div><div>'+[S.headline,S.email,S.phone,S.address,S.web].filter(Boolean).map(esc).join(' | ')+'</div>'
++(S.about?'<h2>Summary</h2><div>'+esc(S.about)+'</div>':'')+(W?'<h2>Experience</h2>'+W:'')+(E?'<h2>Education</h2>'+E:'')
++((S.digital||S.skills)?'<h2>Skills</h2><div>'+list(S.digital).concat(list(S.skills)).map(esc).join(', ')+'</div>':'')
++((S.mother||S.lang.some(l=>l.name))?'<h2>Languages</h2><div>'+list(S.mother).map(m=>esc(m)+' (native)').concat(S.lang.filter(l=>l.name).map(l=>esc(l.name)+' ('+lvl(l)+')')).join(', ')+'</div>':'')
++(S.xtitle&&S.xtext?'<h2>'+esc(S.xtitle)+'</h2>'+ul(S.xtext):'')
++(S.licence?'<h2>Driving licence</h2><div>'+esc(S.licence)+'</div>':'')+'</div>'}
+function lebenslauf(){const ent=a=>a.filter(x=>x.title||x.org).map(x=>'<div class=r><div>'+esc(dates(x))+'</div><div><b>'+esc(x.title)+'</b><br>'+esc([x.org,x.place].filter(Boolean).join(', '))+ul(x.desc)+'</div></div>').join('');
+const pd=[['Anschrift',S.address],['Telefon',S.phone],['E-Mail',S.email],['Geburtsdatum',S.dob],['Staatsangehörigkeit',S.nationality],['Web',S.web]].filter(x=>x[1]);
+const W=ent(S.work),E=ent(S.edu),L=S.lang.filter(l=>l.name);
+return '<div class=lb><div class=top><div><div class=nm>Lebenslauf</div><div style="font-size:14pt;margin-top:4px">'+esc(name())+'</div>'+(S.headline?'<div>'+esc(S.headline)+'</div>':'')+'</div>'+(S.photo?'<img alt="" src="'+S.photo+'">':'')+'</div>'
++(pd.length?'<h2>Persönliche Daten</h2>'+pd.map(x=>'<div class=r><div>'+x[0]+'</div><div>'+esc(x[1])+'</div></div>').join(''):'')
++(S.about?'<h2>Profil</h2><div>'+esc(S.about)+'</div>':'')
++(W?'<h2>Berufserfahrung</h2>'+W:'')+(E?'<h2>Ausbildung</h2>'+E:'')
++((S.mother||L.length)?'<h2>Sprachkenntnisse</h2>'+list(S.mother).map(m=>'<div class=r><div>'+esc(m)+'</div><div>Muttersprache</div></div>').join('')+L.map(l=>'<div class=r><div>'+esc(l.name)+'</div><div>'+[...new Set(CE.map(k=>l[k]))].join(' / ')+' (GER)</div></div>').join(''):'')
++((S.digital||S.skills||S.licence)?'<h2>Kenntnisse</h2>':'')+(S.digital?'<div class=r><div>EDV</div><div>'+list(S.digital).map(esc).join(', ')+'</div></div>':'')+(S.skills?'<div class=r><div>Weitere</div><div>'+list(S.skills).map(esc).join(', ')+'</div></div>':'')
++(S.licence?'<div class=r><div>Führerschein</div><div>Klasse '+esc(S.licence)+'</div></div>':'')
++(S.xtitle&&S.xtext?'<h2>'+esc(S.xtitle)+'</h2>'+ul(S.xtext):'')
++'<div class=sig><div>'+esc(S.place||'Ort')+', '+new Date().toLocaleDateString('de-DE')+'</div><div>Unterschrift</div></div></div>'}
+function draw(){read();$('#out').innerHTML=FMT==='ats'?ats():FMT==='lb'?lebenslauf():europass();
+document.title=name()==='Your Name'?'Europe-Ready CV':name()+' - CV';
+try{localStorage.setItem('erc',JSON.stringify(S))}catch(e){try{localStorage.setItem('erc',JSON.stringify(Object.assign({},S,{photo:''})))}catch(_){}}}
+function fmt(f){FMT=f;document.querySelectorAll('.tabs [data-f]').forEach(b=>b.classList.toggle('on',b.dataset.f===f));draw()}
+function download(n,blob){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=n;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)}
+const fname=ext=>(name()+' CV '+({ep:'Europass',ats:'ATS',lb:'Lebenslauf'}[FMT])).replace(/[^\w -]+/g,'').trim()+ext;
+function saveDoc(){draw();const css=[...document.styleSheets[0].cssRules].map(r=>r.cssText).filter(t=>/^\.(ep|ats|lb)\b/.test(t)).join('\n').replace(/var\(--eu\)/g,'#0b3d91');
+download(fname('.doc'),new Blob(['﻿<html><head><meta charset="utf-8"><style>body{font:10.5pt Arial,sans-serif;color:#111}h2{font-size:11pt}'+css+'</style></head><body>'+$('#out').innerHTML+'</body></html>'],{type:'application/msword'}))}
+function saveFile(){draw();download((name()+' CV data').replace(/[^\w -]+/g,'')+'.json',new Blob([JSON.stringify(S,null,1)],{type:'application/json'}));note('Saved. Use "Load data" later to carry on editing.',1)}
+function loadFile(f){if(!f)return;f.text().then(t=>{try{S=Object.assign(blank(),JSON.parse(t));fill();draw();note('Your saved data is loaded.',1)}catch(e){note('That file is not a saved CV data file.')}});$('#loadf').value=''}
+$('#photo').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,500/im.height);c.width=im.width*k;c.height=im.height*k;c.getContext('2d').drawImage(im,0,0,c.width,c.height);S.photo=c.toDataURL('image/jpeg',.85);draw()};im.src=r.result};r.readAsDataURL(f)};
+async function unzipEntry(buf,want){const d=new DataView(buf);let e=buf.byteLength-22;while(e>=0&&d.getUint32(e,true)!==0x06054b50)e--;if(e<0)throw Error('not a valid .docx file');
+let p=d.getUint32(e+16,true);const n=d.getUint16(e+10,true);
+for(let i=0;i<n;i++){const m=d.getUint16(p+10,true),cs=d.getUint32(p+20,true),fl=d.getUint16(p+28,true),xl=d.getUint16(p+30,true),cl=d.getUint16(p+32,true),off=d.getUint32(p+42,true);
+const nm=new TextDecoder().decode(new Uint8Array(buf,p+46,fl));p+=46+fl+xl+cl;if(nm!==want)continue;
+const lf=d.getUint16(off+26,true),lx=d.getUint16(off+28,true),data=new Uint8Array(buf,off+30+lf+lx,cs);
+if(m===0)return new TextDecoder().decode(data);return await new Response(new Blob([data]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).text()}throw Error('no text found in the .docx')}
+async function docxText(buf){const x=await unzipEntry(buf,'word/document.xml');const doc=new DOMParser().parseFromString(x,'application/xml');
+return [...doc.getElementsByTagNameNS('*','p')].map(p=>{let s='';p.querySelectorAll('*').forEach(n=>{if(n.localName==='t')s+=n.textContent;else if(n.localName==='tab')s+='\t';else if(n.localName==='br')s+='\n'});
+const st=[...p.getElementsByTagNameNS('*','pStyle')].map(x=>x.getAttribute('w:val')||'').join(' ');return (p.getElementsByTagNameNS('*','numPr').length||/list|bullet/i.test(st)?'- ':'')+s}).join('\n')}
+function loadScript(u){return new Promise((ok,no)=>{const s=document.createElement('script');s.src=u;s.onload=ok;s.onerror=()=>no(Error('could not load the PDF reader (no internet?)'));document.head.appendChild(s)})}
+async function pdfText(buf){const B='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';if(!window.pdfjsLib){await loadScript(B+'pdf.min.js');pdfjsLib.GlobalWorkerOptions.workerSrc=B+'pdf.worker.min.js'}
+const pdf=await pdfjsLib.getDocument({data:buf}).promise;const out=[];
+for(let i=1;i<=pdf.numPages;i++){const c=await (await pdf.getPage(i)).getTextContent();let last=null,line='';
+c.items.forEach(it=>{const y=Math.round(it.transform[5]);if(last!==null&&Math.abs(y-last)>3){out.push(line);line=''}line+=(line&&!line.endsWith(' ')&&!it.str.startsWith(' ')?' ':'')+it.str;last=y});out.push(line)}return out.join('\n')}
+async function importFile(f){if(!f)return;note('Reading '+f.name+' ...',1);try{const buf=await f.arrayBuffer();
+const t=/\.pdf$/i.test(f.name)?await pdfText(buf):/\.docx$/i.test(f.name)?await docxText(buf):new TextDecoder().decode(buf);importText(t,f.name)}
+catch(e){note('Could not read '+f.name+': '+e.message+'. Try copying the text and using "Paste CV text".')}$('#cvfile').value=''}
+const SEC=[['about',/^(profile|summary|professional summary|about( me)?|objective|career objective|personal statement)\b/i],['work',/^(work experience|professional experience|experience|employment( history)?|work history|career history)\b/i],
+['edu',/^(education( and training)?|education & training|academic( background)?|qualifications)\b/i],['lang',/^(languages?|language skills)\b/i],['digital',/^(digital skills|computer skills|it skills|technical skills|software)\b/i],
+['skills',/^(skills|key skills|core skills|competencies|core competencies|other skills)\b/i],['licence',/^(driving licen[cs]e|driver'?s licen[cs]e)\b/i],['x',/^(certifications?|certificates|courses|training|projects|volunteer(ing)?|achievements|awards|interests|hobbies)\b/i]];
+const MON='(?:jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\\.?';
+const DT=new RegExp('((?:'+MON+'\\s*)?(?:\\d{1,2}[/.-])?(?:19|20)\\d{2})\\s*(?:-|–|—|to|until)\\s*((?:'+MON+'\\s*)?(?:\\d{1,2}[/.-])?(?:19|20)\\d{2}|present|current|now|today|ongoing|date)','i');
+function importText(t,src){t=String(t||'').replace(/\r/g,'');if(t.trim().length<30){note('There is not enough text to read. If it is a scanned PDF, the text cannot be read - type it in instead.');return}
+read();const R=blank();R.photo=S.photo;const L=t.split('\n').map(x=>x.replace(/\s+$/,'')).filter(x=>x.trim());
+const em=t.match(/[\w.+-]+@[\w-]+\.[\w.-]+/);if(em)R.email=em[0];
+const ph=t.match(/(\+?\d[\d ()./-]{7,}\d)/);if(ph&&!DT.test(ph[0]))R.phone=ph[0].trim();
+const wb=t.match(/(https?:\/\/\S+|(?:www\.)?linkedin\.com\/\S+)/i);if(wb)R.web=wb[0];
+const isHead=s=>s.length<45&&SEC.some(x=>x[1].test(s.replace(/[:|]+$/,'')));
+const nm=L.slice(0,5).map(x=>x.trim()).find(x=>!/[@\d:|/]/.test(x)&&x.split(/\s+/).length<=5&&x.length<45&&!isHead(x));
+if(nm){const p=nm.split(/\s+/).map(w=>w[0].toUpperCase()+w.slice(1).toLowerCase());R.first=p.length>1?p.slice(0,-1).join(' '):p[0];R.last=p.length>1?p[p.length-1]:'';
+const i=L.findIndex(x=>x.trim()===nm),h=L[i+1]&&L[i+1].trim();if(h&&!/[@|]/.test(h)&&!/\d{4}/.test(h)&&h.length<60&&!isHead(h))R.headline=h}
+let cur=null;const B={};
+L.forEach(x=>{const s=x.trim(),hit=s.length<45&&SEC.find(([k,re])=>re.test(s.replace(/[:|]+$/,'')));
+if(hit){cur=hit[0];if(cur==='x'&&!R.xtitle)R.xtitle=s.replace(/[:|]+$/,'').replace(/\b\w/g,c=>c.toUpperCase()).replace(/\B\w+/g,w=>w.toLowerCase());B[cur]=B[cur]||[];const rest=s.replace(hit[1],'').replace(/^[:\s|-]+/,'');if(rest)B[cur].push(rest);return}
+if(cur)(B[cur]=B[cur]||[]).push(s);
+else if(!R.address&&s!==nm&&s!==R.headline){const parts=s.split(/\s*[|•]\s*/).filter(p=>/,/.test(p)&&!/[@\d]/.test(p)&&!/linkedin|http/i.test(p));if(parts[0]&&parts[0].length<60)R.address=parts[0].replace(/^(address|location)\s*:\s*/i,'')}});
+if(B.about)R.about=B.about.join(' ');
+R.work=entries(B.work||[]);R.edu=entries(B.edu||[]);
+(B.lang||[]).join('\n').split(/[\n,;•|]/).map(x=>x.trim()).filter(Boolean).forEach(x=>{const n=x.match(/^(.+?)\s*(?:[-:–(]\s*(.*?)\)?)?$/);if(!n)return;const ln=n[1].trim(),rest=n[2]||'';if(ln.length>30)return;
+if(/^(language|languages|level)$/i.test(ln))return;
+if(/native|mother/i.test(rest+' '+x)){R.mother=[R.mother,ln].filter(Boolean).join(', ');return}
+let lv=(rest.match(/\b([ABC][12])\b/i)||[])[1];if(!lv)lv=/fluent|proficient|advanced/i.test(rest)?'C1':/intermediate|good/i.test(rest)?'B1':/basic|beginner|elementary/i.test(rest)?'A2':'B1';
+lv=lv.toUpperCase();R.lang.push({name:ln,l:lv,r:lv,sp:lv,si:lv,w:lv})});
+const flat=a=>list(a.join(',').replace(/[•·]/g,',')).map(x=>x.replace(/^[-*]\s*/,'')).join(', ');
+if(B.digital)R.digital=flat(B.digital);if(B.skills)R.skills=flat(B.skills);
+if(B.licence)R.licence=B.licence.join(' ').replace(/^(category|class)\s*/i,'');if(B.x)R.xtext=B.x.join('\n');
+if(!R.work.length)R.work=[{}];if(!R.edu.length)R.edu=[{}];
+S=R;fill();draw();const nw=R.work.filter(x=>x.title||x.org).length,ne=R.edu.filter(x=>x.title||x.org).length,nl=R.lang.length+list(R.mother).length;
+note('Read '+(src||'your text')+': found '+nw+' job(s), '+ne+' education entr'+(ne===1?'y':'ies')+' and '+nl+' language(s). Please check every section, especially dates, titles and language levels.',1)}
+function entries(arr){const out=[];let e=null;const isDate=s=>DT.test(s)&&!/^[-•*·–]/.test(s);
+arr.forEach((s,i)=>{const m=s.match(DT),bullet=/^[-•*·–]/.test(s);
+if(m&&!bullet){const before=s.replace(m[0],'').replace(/^[\s|,–—-]+|[\s|,–—-]+$/g,'').trim(),to=m[2].replace(/^(current|now|today|date|ongoing|present)$/i,'Present');
+if(e&&!e.from&&(e.title||e.org)&&!e.desc){e.from=m[1];e.to=to;if(before)split(e,before);return}
+e={title:'',org:'',place:'',from:m[1],to,desc:''};out.push(e);if(before)split(e,before);return}
+if(!bullet&&arr[i+1]&&isDate(arr[i+1])&&!(e&&!e.from&&!e.desc)){e={title:'',org:'',place:'',from:'',to:'',desc:''};out.push(e);split(e,s);return}
+if(!e){e={title:'',org:'',place:'',from:'',to:'',desc:''};out.push(e)}
+if(bullet||(e.title&&(e.org||e.from)))e.desc+=(e.desc?'\n':'')+s.replace(/^[-•*·–]\s*/,'');else split(e,s)});
+return out.filter(x=>x.title||x.org||x.desc).slice(0,15)}
+function split(e,s){const p=s.split(/\s+(?:at|@)\s+|\s+[|–—]\s+|\s+-\s+|,\s+/).map(x=>x.trim()).filter(Boolean);
+if(!e.title){e.title=p[0];if(p[1]&&!e.org)e.org=p[1];if(p[2]&&!e.place)e.place=p.slice(2).join(', ')}
+else if(!e.org){e.org=p[0];if(p[1]&&!e.place)e.place=p.slice(1).join(', ')}else e.desc+=(e.desc?'\n':'')+s}
+function loadSample(){importText(['ALEX SAMPLE','Customer Operations Coordinator','alex.sample@example.com | +44 7700 900123 | Bristol, United Kingdom','linkedin.com/in/alex-sample','',
+'PROFILE','Organised operations coordinator with 6 years in transport and customer service. I keep schedules running, fix problems before customers notice and build simple tools that save the team hours every week.','',
+'WORK EXPERIENCE','Operations Coordinator, Example Travel Ltd, Bristol','03/2022 - Present','- Plan daily routes and vehicle allocations for a fleet of 40 vehicles','- Built Excel and Python reports that cut weekly reporting time by 70%','- First point of contact for schools and tour operators','',
+'Customer Support Agent, Sample Retail Services, Manchester','2018 - 2022','- Handled 80+ chat and email cases per day with 95% satisfaction','- Trained 12 new starters','',
+'EDUCATION','BSc Visual Communication, Example University, Leeds','2014 - 2017','','LANGUAGES','English - C1','Spanish - A2','Hindi - Native','',
+'SKILLS','Scheduling, Customer service, Team training','','DIGITAL SKILLS','Excel, Python, Power BI, Canva','','DRIVING LICENCE','B'].join('\n'),'the sample CV');S.nationality='British';fill();draw()}
+const dz=$('#drop');['dragover','dragenter'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.add('on')}));
+['dragleave','drop'].forEach(v=>dz.addEventListener(v,e=>{e.preventDefault();dz.classList.remove('on')}));dz.addEventListener('drop',e=>importFile(e.dataTransfer.files[0]));
+F.addEventListener('input',draw);F.addEventListener('change',draw);
+try{const s=JSON.parse(localStorage.getItem('erc')||'null');if(s)S=Object.assign(blank(),s)}catch(e){}
+if(!S.work.length&&!S.edu.length&&!S.first){S.work=[{}];S.edu=[{}];S.lang=[{l:'B1',r:'B1',sp:'B1',si:'B1',w:'B1'}]}
+fill();draw();
+</script></body></html>
