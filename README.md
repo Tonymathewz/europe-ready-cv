@@ -8,6 +8,10 @@ Turn your existing CV into three versions for jobs in Europe, free and in the br
 
 **[Open the tool](https://tonymathewz.github.io/europe-ready-cv/)** (no sign-up, no payment)
 
+![Europe-Ready CV: the form on the left, the Europass-style CV with the CEFR language grid on the right](docs/screenshot.png)
+
+*Built from the tool's own "Try sample" CV. The tabs at the top switch to the ATS-friendly CV and the German Lebenslauf.*
+
 ## How it works
 1. **Bring in your CV.** Drop a PDF, Word (.docx) or text file, or paste the text. The tool reads it and fills in the form: name, contact details, jobs with dates, education, languages and skills.
 2. **Check and complete it.** Automatic reading is never perfect, so you review every section. Add language levels, a photo if you want one, and a driving licence.
